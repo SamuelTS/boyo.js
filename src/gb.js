@@ -50,9 +50,9 @@ X.GB = (function() {
         // Show the custom panel by default
         stats.showPanel(panel_id);
 
-        // Put the counter top-right
-        stats.dom.style.left = null;
-        stats.dom.style.right = '0';
+        // Put the counter top-left
+        stats.dom.style.left = '0';
+        stats.dom.style.top = '0';
         document.body.appendChild(stats.dom);
       }
 
@@ -65,6 +65,8 @@ X.GB = (function() {
         gb.power = true;
         gb.reset();
         gb.resume();
+        X.Audio.context.suspend();
+        X.Audio.context.resume();
       }
 
       // Setup listeners for ROM loading

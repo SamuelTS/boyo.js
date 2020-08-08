@@ -1,6 +1,6 @@
 # Boyo
 
-Boyo is a Game Boy emulator written in JavaScript. You can try it [here](http://merwanachibet.net/boyo.js/).
+Boyo is a Game Boy emulator written in JavaScript. This fork adds some features and bugfixes.
 
 ![Super Mario Land](http://i.imgur.com/p0ADG8A.png)
 ![Zelda: Link's Awakening](http://i.imgur.com/EukNdBc.png)
@@ -12,7 +12,8 @@ Boyo is a Game Boy emulator written in JavaScript. You can try it [here](http://
 - Emulated CPU
 - Plays most games!
 - Basic debugger
+- Supports Gamepads (Xbox controller, etc.)
+- Nice UI with the original Game Boy design
 
 ##### Future plans
-- support more memory bank controllers (MBC4)
-- nice UI
+- Support more memory bank controllers (MBC4)

@@ -9,76 +9,33 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 
 body  {
 	font-family: "Pontano Sans";
-}
 
-header {
-	padding-left: 1em;
-	padding-top: 1em;
-}
-header h1, header h2, header h3 {
-	display: inline;
-}
-
-header h1 {
-	font-size: 1.5em;
-}
-
-header h2 {
-	font-size: 1em;
-}
-
-header h2 a {
-	color: #AAAAAA;
-}
-header h2 a:hover {
-	color: deeppink;
-}
-
-header h3 {
-	font-size: 0.8em;
-	color: lightgray;
-}
-
-canvas {
-	image-rendering: -moz-crisp-edges;
-	image-rendering: -o-crisp-edges;
-	image-rendering: -webkit-optimize-contrast;
-	border: 1px solid lightgray;
-}
-
-/* Game */
-
-#game {
-	width: 50%;
-	text-align: center;
-}
-
-#game canvas {
-	margin: 3em;
-	background-color: white;
-}
-
-#game canvas:-webkit-full-screen {
-	width: 200%;
-}
-
-#game table {
-	margin: auto;
-	margin-bottom: 2em;
-}
-
-#game table td {
-	padding: 0 2em;
-}
-
-body {
+	background-image: url("images/game_boy.png");
+    background-repeat: no-repeat;
+	background-position-x: center;
+	
 	overflow: hidden;
 }
 
-/* Controls */
+canvas {
+	background-color: rgb(83, 99, 23);
 
-#controls {
-  margin-bottom: 2em;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -o-crisp-edges;
+	image-rendering: -webkit-optimize-contrast;
+
+	display: block;
+	width: 241px;
+	height: 219px;
+	margin: 0 auto;
+
+	position: relative;
+	top: 99px;
+    left: 1px;
+}
+
+canvas:-webkit-full-screen {
+	background-color: black;
 }
 
 /* Menu */
@@ -107,6 +64,24 @@ aside > #expand_button {
 aside:hover {
 	right: 0;
 	transition: right 0.3s ease-out;
+}
+
+/* Headings */
+
+#headings {
+	padding-bottom: 1em;
+}
+
+#headings h1, #headings h2 {
+	display: inline;
+}
+
+#headings h1 {
+	font-size: 1.5em;
+}
+
+#headings h2 {
+	font-size: 1em;
 }
 
 /* First level categories */
@@ -147,10 +122,33 @@ aside > section > section.expanded {
 	transition: height 1s;
 }
 
-/* Settings */
+/* File */
 
-#settings {
+#file h3 {
+	background-color: hsl(187 74% 50% / 1);
 }
+
+#file_contents {
+	background-color: hsl(187 74% 70% / 1);
+    padding: 1em;
+}
+
+#file_contents #hosted_rom {
+	margin-bottom: .5em;
+}
+
+/* Emulation */
+
+#emulation h3 {
+	background-color: hsl(259 40% 70% / 1);
+}
+
+#emulation_contents {
+	padding: 1em;
+	background-color: hsl(259 40% 90% / 1);
+}
+
+/* Settings */
 
 #settings h3 {
 	background-color: #75D9B4;

@@ -21,8 +21,6 @@ GAMES
 - reset cleanly between roms
 
 MISC
-- gamepad
-- nice UI
 - put dissemianted UI scripts in some specific module
 - show saved games in menu (with delete option)
 - bypass bootstrap

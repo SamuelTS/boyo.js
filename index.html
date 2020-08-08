@@ -15,6 +15,7 @@
   <script src="src/gb.js"></script>
   <script src="src/debugger.js"></script>
 
+  <script src="libs/gamecontroller.min.js"></script>
   <script src="libs/underscore.min.js"></script>
   <script src="libs/stats.min.js"></script>
 
@@ -22,66 +23,60 @@
 </head>
 <body>
 
-  <header>
-    <h1>Boyo</h1>
-    <h2> — a Game Boy emulator written in JavaScript <a href="https://github.com/merwaaan/boyo.js">(→ source)</a></h2>
-  </header>
-
-  <div id="game">
-
-    <canvas width="160" height="144"></canvas>
-
-    <p id="controls">
-      <button id="emulator-toggle" disabled>Resume</button>
-      <button id="gb-reset">Reset</button>
-    </p>
-
-    <table>
-      <tr>
-        <td>
-          <select id="hosted_rom">
-            <option disabled selected hidden="hidden">Try one of the available ROMs</option>
-            <optgroup label="Homebrew games">
-              <option>Espionage - Fredrik Brundin</option>
-              <option>Adjustris - Dave Vanee</option>
-            </optgroup>
-            <optgroup label="Demos">
-              <option>gejmbåj - Snorpung</option>
-              <option>oh! - Snorpung</option>
-              <option>20y - Snorpung</option>
-              <option>demon blood - Youth Uprising</option>
-            </optgroup>
-            <optgroup label="Chiptune">
-              <option>Music Tech - PIXELH8</option>
-              <option>Little Sound Dj (demo) - Johan Kotlinski</option>
-            </optgroup>
-            <optgroup label="Blargg's tests">
-              <option>cpu_instrs</option>
-              <option>dmg_sound</option>
-              <option>dmg_sound-2</option>
-              <option>instr_timing</option>
-              <option>mem_timing</option>
-              <option>mem_timing-2</option>
-              <option>oam_bug</option>
-              <option>oam_bug-2</option>
-            </optgroup>
-          </select>
-        </td>
-        <td>
-          <p>OR</p>
-        </td>
-        <td>
-          <p>Open your own ROM</p>
-          <input type="file" id="local_rom"/>
-        </td>
-      </tr>
-    </table>
-
-  </div>
+  <canvas width="160" height="144"></canvas>
 
   <aside>
 
     <span id="expand_button">MENU</span>
+
+    <div id="headings">
+      <h1>Boyo</h1><h2> — a Game Boy emulator written in JavaScript</h2>
+    </div>
+
+    <section id="file">
+      <h3>File</h3>
+      <div id="file_contents">
+        <select id="hosted_rom">
+          <option disabled selected hidden="hidden">Try one of the available ROMs</option>
+          <optgroup label="Homebrew games">
+            <option>Espionage - Fredrik Brundin</option>
+            <option>Adjustris - Dave Vanee</option>
+          </optgroup>
+          <optgroup label="Demos">
+            <option>gejmbåj - Snorpung</option>
+            <option>oh! - Snorpung</option>
+            <option>20y - Snorpung</option>
+            <option>demon blood - Youth Uprising</option>
+          </optgroup>
+          <optgroup label="Chiptune">
+            <option>Music Tech - PIXELH8</option>
+            <option>Little Sound Dj (demo) - Johan Kotlinski</option>
+          </optgroup>
+          <optgroup label="Blargg's tests">
+            <option>cpu_instrs</option>
+            <option>dmg_sound</option>
+            <option>dmg_sound-2</option>
+            <option>instr_timing</option>
+            <option>mem_timing</option>
+            <option>mem_timing-2</option>
+            <option>oam_bug</option>
+            <option>oam_bug-2</option>
+          </optgroup>
+        </select>
+  
+        <p>OR Open your own ROM</p>
+        <input type="file" id="local_rom"/>
+
+      </div>
+    </section>
+
+    <section id="emulation">
+      <h3>Emulation</h3>
+      <div id="emulation_contents">
+        <button id="emulator-toggle" disabled>Resume</button>
+        <button id="gb-reset">Reset</button>
+      </div>
+    </section>
 
     <section id="settings">
       <h3>Settings</h3>
@@ -156,13 +151,22 @@
     <section id="about">
       <h3>About</h3>
 
-      <p>By <a href="https://github.com/merwaaan">merwaaan</a> and <a href="https://github.com/fmdkdd">fmdkdd</a></p>
-      <p>Source on <a href="https://github.com/merwaaan/boyo.js">GitHub</a></p>
+      <p>By <a href="https://github.com/merwaaan">merwaaan</a>, <a href="https://github.com/fmdkdd">fmdkdd</a> and <a href="https://github.com/SamuelTS">Samuel Tallet</a></p>
+      <p>Source on <a href="https://github.com/SamuelTS/boyo.js">GitHub</a></p>
 
     </section>
 
     <section id="changelog">
       <h3>Changelog</h3>
+
+      <section>
+        <h4>0.3</h4>
+        <ul>
+          <li>Update UI with the original Game Boy design</li>
+          <li>Add gamepad support</li>
+          <li>Fix sound issue (audio context not allowed to start)</li>
+        </ul>
+      </section>
 
       <section>
         <h4>0.2</h4>

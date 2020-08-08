@@ -900,7 +900,8 @@ X.Audio = (function() {
   return {
 
     init: function() {
-      context = new window.AudioContext()
+
+      X.Audio.context = context = new window.AudioContext()
       script_processor = context.createScriptProcessor(0, 0, 2)
       script_processor.onaudioprocess = X.Audio.callback
 
@@ -957,6 +958,10 @@ X.Audio = (function() {
       var delta = buffer_left.length - out.length
       if (delta < 0) {
         console.warn("Audio buffer underrun: %d samples", delta)
+        X.Audio.context.suspend();
+        window.setTimeout(function() {
+          X.Audio.context.resume();
+        }, 1000); // TODO: Find a better way to fix the sound.
       } else if (delta > (out.length * 2)) {
         console.warn("Audio buffer overrun: %d samples", delta)
       }

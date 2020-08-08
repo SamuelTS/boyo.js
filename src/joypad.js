@@ -9,6 +9,17 @@ X.Joypad = (function() {
     [39, 37, 38, 40] // Directions: arrows
   ];
 
+  var mapping = {
+    "a": 65,
+    "b": 90,
+    "select": 32,
+    "start": 13,
+    "right": 39,
+    "left": 37,
+    "up": 38,
+    "down": 40
+  };
+
   var keys = {}; // Key states
   var selection = 0; // 0x10 -> buttons, 0x20 -> directions, otherwise -> disabled
 
@@ -29,12 +40,185 @@ X.Joypad = (function() {
 
     init: function() {
 
+      gameControl.on('connect', function(gamepad) {
+
+        gamepad.on('button1', function() {
+          if (!keys[mapping.a]) {
+            keys[mapping.a] = true;
+            X.CPU.request_interrupt(4);
+            X.CPU.stopped = false; // Button presses terminate STOP
+          }
+        });
+
+        gamepad.after('button1', function() {
+          if (mapping.a in keys) {
+            keys[mapping.a] = false;
+          }
+        });
+
+        gamepad.on('button0', function() {
+          if (!keys[mapping.b]) {
+            keys[mapping.b] = true;
+            X.CPU.request_interrupt(4);
+            X.CPU.stopped = false; // Button presses terminate STOP
+          }
+        });
+
+        gamepad.after('button0', function() {
+          if (mapping.b in keys) {
+            keys[mapping.b] = false;
+          }
+        });
+
+        gamepad.on('select', function() {
+          if (!keys[mapping.select]) {
+            keys[mapping.select] = true;
+            X.CPU.request_interrupt(4);
+            X.CPU.stopped = false; // Button presses terminate STOP
+          }
+        });
+
+        gamepad.after('select', function() {
+          if (mapping.select in keys) {
+            keys[mapping.select] = false;
+          }
+        });
+
+        gamepad.on('start', function() {
+          if (!keys[mapping.start]) {
+            keys[mapping.start] = true;
+            X.CPU.request_interrupt(4);
+            X.CPU.stopped = false; // Button presses terminate STOP
+          }
+        });
+
+        gamepad.after('start', function() {
+          if (mapping.start in keys) {
+            keys[mapping.start] = false;
+          }
+        });
+
+        gamepad.on('right0', function() {
+          if (!keys[mapping.right]) {
+            keys[mapping.right] = true;
+            X.CPU.request_interrupt(4);
+            X.CPU.stopped = false; // Button presses terminate STOP
+          }
+        });
+
+        gamepad.after('right0', function() {
+          if (mapping.right in keys) {
+            keys[mapping.right] = false;
+          }
+        });
+
+        gamepad.on('button15', function() {
+          if (!keys[mapping.right]) {
+            keys[mapping.right] = true;
+            X.CPU.request_interrupt(4);
+            X.CPU.stopped = false; // Button presses terminate STOP
+          }
+        });
+
+        gamepad.after('button15', function() {
+          if (mapping.right in keys) {
+            keys[mapping.right] = false;
+          }
+        });
+
+        gamepad.on('left0', function() {
+          if (!keys[mapping.left]) {
+            keys[mapping.left] = true;
+            X.CPU.request_interrupt(4);
+            X.CPU.stopped = false; // Button presses terminate STOP
+          }
+        });
+
+        gamepad.after('left0', function() {
+          if (mapping.left in keys) {
+            keys[mapping.left] = false;
+          }
+        });
+
+        gamepad.on('button14', function() {
+          if (!keys[mapping.left]) {
+            keys[mapping.left] = true;
+            X.CPU.request_interrupt(4);
+            X.CPU.stopped = false; // Button presses terminate STOP
+          }
+        });
+
+        gamepad.after('button14', function() {
+          if (mapping.left in keys) {
+            keys[mapping.left] = false;
+          }
+        });
+
+        gamepad.on('up0', function() {
+          if (!keys[mapping.up]) {
+            keys[mapping.up] = true;
+            X.CPU.request_interrupt(4);
+            X.CPU.stopped = false; // Button presses terminate STOP
+          }
+        });
+
+        gamepad.after('up0', function() {
+          if (mapping.up in keys) {
+            keys[mapping.up] = false;
+          }
+        });
+
+        gamepad.on('button12', function() {
+          if (!keys[mapping.up]) {
+            keys[mapping.up] = true;
+            X.CPU.request_interrupt(4);
+            X.CPU.stopped = false; // Button presses terminate STOP
+          }
+        });
+
+        gamepad.after('button12', function() {
+          if (mapping.up in keys) {
+            keys[mapping.up] = false;
+          }
+        });
+
+        gamepad.on('down0', function() {
+          if (!keys[mapping.down]) {
+            keys[mapping.down] = true;
+            X.CPU.request_interrupt(4);
+            X.CPU.stopped = false; // Button presses terminate STOP
+          }
+        });
+
+        gamepad.after('down0', function() {
+          if (mapping.down in keys) {
+            keys[mapping.down] = false;
+          }
+        });
+
+        gamepad.on('button13', function() {
+          if (!keys[mapping.down]) {
+            keys[mapping.down] = true;
+            X.CPU.request_interrupt(4);
+            X.CPU.stopped = false; // Button presses terminate STOP
+          }
+        });
+
+        gamepad.after('button13', function() {
+          if (mapping.down in keys) {
+            keys[mapping.down] = false;
+          }
+        });
+
+      });
+
       document.addEventListener('keydown', function(event) {
         if (_.contains(_.flatten(codes), event.keyCode)) {
           event.preventDefault();
 
           if (!keys[event.keyCode]) {
             keys[event.keyCode] = true;
+
             X.CPU.request_interrupt(4);
             X.CPU.stopped = false; // Button presses terminate STOP
           }

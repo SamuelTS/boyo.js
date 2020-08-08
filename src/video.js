@@ -75,7 +75,7 @@ X.Video = (function() {
       background_maps = new Uint8Array(vram, 0x1800, 0x800);
 
       // Switch to fullscreen when the canvas is clicked
-      var canvas_dom = document.querySelector('#game canvas');
+      var canvas_dom = document.querySelector('canvas');
       canvas_dom.addEventListener('click', function(event) {
         var fullscreen = canvas_dom.webkitRequestFullScreen
               || canvas_dom.mozRequestFullScreen();
